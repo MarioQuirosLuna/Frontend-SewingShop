@@ -31,6 +31,18 @@ export const newProduct = (newProduct) => {
 	return req.then(res => res.data).catch(e => {console.error(`ErrorFront: ${e}`)})
 }
 
+export const deleteProduct = (id) => {
+	const config = {
+		headers: {
+			'Authorization': token,
+			'Content-Type': 'application/json',
+		}
+	}
+
+	const req = axios.delete(`${baseUrl}/products/${id}`, config)
+	return req.then(res => res.data).catch(e => {console.error(`ErrorFront: ${e}`)})
+}
+
 export const login = async (credentials) => {
 	const { data } = await axios.post(baseUrl+'/login',credentials)
 	return data

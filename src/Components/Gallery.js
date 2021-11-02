@@ -1,29 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Product from './Product'
-import { getProducts } from '../api'
 import '../css/GalleryStyle.css'
 
-const Gallery = () => {
+const Gallery = (props) => {
 
-	const [products, setProducts] = useState([])
-
-	useEffect(() =>{
-		fetchProducts()
-	},[])
-
-	const fetchProducts = async () => {
-		const data = await getProducts()
-		setProducts(data)
-	}
+	const {products} = props
 
 	return (
 		<div>
 			<div className="gallery-grid">
-				{products.map((product) => {
-					return (
-						<Product product={product} key={product.id}/>
-					)
-				})}
+				{
+					products.map((product) => {
+						return (
+							<Product product={product} key={product.id}/>
+						)
+					})
+				}
 			</div>
 		</div>
 	)

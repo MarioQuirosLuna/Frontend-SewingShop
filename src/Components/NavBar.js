@@ -1,22 +1,29 @@
 import React from 'react'
 import SearchBar from '../Components/SearchBar'
 import { Link } from 'react-router-dom'
+import Header from '../Components/Header'
 
 const NavBar = (props) => {
-	const {onSearch} = props
+	const {onSearch, user, handleLogOut} = props
 
 	return (
-		<div className="navbar">
+		<nav className="navbar">
 			<div>
 				<div className="navbar-icon">
 					<img src="https://res.cloudinary.com/dusx4zdpz/image/upload/v1635217676/Logo_apnt8n.png" alt="logo" />
 				</div>
 				<SearchBar onSearch={onSearch}/>
 				<div>
-					<Link to='/login'>Sesi&oacute;n</Link>
+					{
+						!user ? 
+							<Link to='/login'>Sesi&oacute;n</Link>
+							:
+							<Link to='/' onClick={handleLogOut}>Cerrar Sesi&oacute;n</Link>
+					}
 				</div>
 			</div>
-		</div>
+			<Header />
+		</nav>
 	)
 }
 

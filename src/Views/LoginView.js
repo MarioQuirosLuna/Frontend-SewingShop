@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import { setToken, login } from '../api'
 
 
@@ -11,6 +11,8 @@ export default function LoginForm(props){
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	
+	const history = useHistory()
+
 	const handleLogin = async (e) => {
 		e.preventDefault()
 
@@ -18,8 +20,6 @@ export default function LoginForm(props){
 			const user = await login({
 				username: username, password: password
 			})
-
-			console.log(user)
 
 			window.localStorage.setItem(
 				'loggedAppUser', JSON.stringify(user)
@@ -30,6 +30,8 @@ export default function LoginForm(props){
 			setUser(user)
 			setUsername('')
 			setPassword('')
+
+			history.push('/')
 		}catch(error){
 			console.log(error)
 		}
