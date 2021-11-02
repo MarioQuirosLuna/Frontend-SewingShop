@@ -6,16 +6,14 @@ const Gallery = (props) => {
 	const {products} = props
 
 	return (
-		<div>
-			<div className="gallery-grid">
-				{
-					products.map((product) => {
-						return (
-							<Product product={product} key={product.id}/>
-						)
-					})
-				}
-			</div>
+		<div className="m-1 row row-cols-1 row-cols-md-3 g-4">
+			{
+				products.map((product) => {
+					return (
+						<Product product={product} key={product.id}/>
+					)
+				})
+			}
 		</div>
 	)
 }

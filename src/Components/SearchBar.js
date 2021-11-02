@@ -22,13 +22,9 @@ const Searchbar = (props) => {
 	}
 
 	return (
-		<div className="search-bar-container">
-			<div className="search-bar">
-				<input placeholder="Search" onChange={onChange} onKeyPress={onKeyPress}></input>
-			</div>
-			<div className="search-bar-btn">
-				<button className="btn-Search" onClick={onClick}>Search</button>
-			</div>
+		<div className="input-group mb-3">
+			<input className="form-control" placeholder="Buscar" onChange={onChange} onKeyPress={onKeyPress}></input>
+			<button className="btn btn-success" onClick={onClick}>Buscar</button>
 		</div>
         
 	)

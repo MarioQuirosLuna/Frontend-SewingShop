@@ -8,9 +8,11 @@ export default function HomeView(prop) {
 
 
 	return (
-		<div>
+		<div className="">
 			<NavBar user={user} handleLogOut={handleLogOut} onSearch={onSearch}/>
-			<Gallery products={products}/>
+			<div className="container">
+				<Gallery products={products}/>
+			</div>
 		</div>
 	)
 }

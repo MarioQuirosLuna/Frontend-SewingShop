@@ -4,6 +4,7 @@ import { setToken, getProducts, searchProducts } from './api'
 import HomeView from './Views/HomeView'
 import LoginView from './Views/LoginView'
 import ManageProductView from './Views/ManageProductView'
+import '../src/css/Style.css'
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
 	}
 
 	return (
-		<div className="App">
+		<div className="App fondo">
 			<BrowserRouter>
 				<Switch>
 					<Route exact path='/'><HomeView user={user} setUser={setUser} handleLogOut={handleLogOut} products={products} onSearch={onSearch}/></Route>

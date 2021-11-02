@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import '../Product/ProductStyle.css'
 import Slide from '../Product/Slide'
 
 const Product = (props) => {
@@ -21,18 +20,12 @@ const Product = (props) => {
 	}
 
 	return (
-		<div className="product-container">
+		<div className="card text-center shadow-lg p-3 mb-5 bg-body rounded">
 			<Slide imageUrl={product.images[imageIndex].url} nameProduct={product.nameProduct} prevImage={prevImage} nextImage={nextImage} productImgLength={product.images.length}/>
-			<div className="product-description-container">
-				<div className="product-name">
-					<h2>{product.nameProduct}</h2>
-				</div>
-				<div className="product-price">
-					<p>₡{product.price}</p>
-				</div>
-				<div className="product-availability">
-					<p>{product.availability}</p>
-				</div>
+			<div className="card-body">
+				<h2>{product.nameProduct}</h2>
+				<p>₡{product.price}</p>
+				<spam className="rounded-pill bg-success p-2 text-light">{product.availability}</spam>
 			</div>
 		</div>
 	)
