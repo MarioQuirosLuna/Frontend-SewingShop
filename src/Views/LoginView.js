@@ -26,10 +26,7 @@ export default function LoginForm(props){
 			)
 
 			setToken(user.token)
-
 			setUser(user)
-			setUsername('')
-			setPassword('')
 
 			history.push('/')
 		}catch(error){

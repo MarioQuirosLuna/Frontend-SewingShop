@@ -22,7 +22,9 @@ const NavBar = (props) => {
 					}
 				</div>
 			</div>
-			<Header />
+			{
+				((user && user.role === 'user') || !user) ? null : <Header />
+			}
 		</nav>
 	)
 }

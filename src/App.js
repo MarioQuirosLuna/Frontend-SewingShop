@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { setToken, getProducts } from './api'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { setToken, getProducts, searchProducts } from './api'
 import HomeView from './Views/HomeView'
 import LoginView from './Views/LoginView'
 import ManageProductView from './Views/ManageProductView'
@@ -14,11 +14,6 @@ function App() {
 		fetchProducts()
 	},[])
 
-	const fetchProducts = async () => {
-		const data = await getProducts()
-		setProducts(data)
-	}
-
 	useEffect(() => {
 		const loggedUserJSON = window.localStorage.getItem('loggedAppUser')
 		if(loggedUserJSON){
@@ -28,20 +23,42 @@ function App() {
 		}
 	},[])
 
+	const fetchProducts = async () => {
+		const data = await getProducts()
+		setProducts(data)
+	}
+
 	const handleLogOut = () => {
 		setUser(null)
 		setToken('')
 		window.localStorage.removeItem('loggedAppUser')
 	}
 
+	const onSearch = async (nameProduct) => {
+		try{
+			if(!nameProduct) {
+				setProducts(await getProducts())
+				return 
+			}
+
+			const results = await searchProducts(nameProduct)
+			setProducts(results)
+		}catch(e){
+			console.error(e)
+		}
+	}
 
 	return (
 		<div className="App">
 			<BrowserRouter>
 				<Switch>
-					<Route exact path='/'><HomeView user={user} setUser={setUser} handleLogOut={handleLogOut} products={products}/></Route>
-					<Route path='/login'><LoginView setUser={setUser}/></Route>
-					<Route path='/manageProducts'><ManageProductView products={products} setProducts={setProducts} fetchProducts={fetchProducts}/></Route> 
+					<Route exact path='/'><HomeView user={user} setUser={setUser} handleLogOut={handleLogOut} products={products} onSearch={onSearch}/></Route>
+					<Route path='/login' render={() => {
+						return user ? <Redirect to='/' /> : <LoginView setUser={setUser}/>
+					}}/>
+					<Route path='/manageProducts' render={() => {
+						return !user ? <Redirect to='/' /> : <ManageProductView products={products} setProducts={setProducts} fetchProducts={fetchProducts} onSearch={onSearch}/>
+					}}/> 
 				</Switch>
 			</BrowserRouter>
 		</div>

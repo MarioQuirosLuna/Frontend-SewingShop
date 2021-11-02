@@ -19,6 +19,16 @@ export const getProducts = async () => {
 	}
 }
 
+export const searchProducts = async (nameProduct) => {
+	try{
+		const res = await axios.get(`${baseUrl}/products/name/${nameProduct}`)
+		const data = res.data
+		return data
+	}catch(e){
+		console.error(e)
+	}
+}
+
 export const newProduct = (newProduct) => {
 	const config = {
 		headers: {
@@ -28,6 +38,18 @@ export const newProduct = (newProduct) => {
 	}
 
 	const req = axios.post(baseUrl + '/products', newProduct, config)
+	return req.then(res => res.data).catch(e => {console.error(`ErrorFront: ${e}`)})
+}
+
+export const putProduct = (id, newProduct) => {
+	const config = {
+		headers: {
+			'Authorization': token,
+			'Content-Type': 'multipart/form-data'
+		}
+	}
+
+	const req = axios.put(`${baseUrl}/products/${id}`, newProduct, config)
 	return req.then(res => res.data).catch(e => {console.error(`ErrorFront: ${e}`)})
 }
 

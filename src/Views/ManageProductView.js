@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
-import { newProduct, deleteProduct } from '../api'
+import { newProduct, putProduct, deleteProduct } from '../api'
 import ItemList from '../Components/ItemList'
+import Header from '../Components/Header'
+import SearchBar from '../Components/SearchBar'
+import FormProduct from '../Components/FormProduct'
 
 export default function ProductForm(props){
 
-	const {products, setProducts, fetchProducts} = props
+	const {products, setProducts, fetchProducts, onSearch} = props
 
+	const [modePost, setModePost] = useState(true)
+	const [productId, setProductId] = useState('')
 	const [nameProduct, setNameProduct] = useState('')
 	const [price, setPrice] = useState('')
 	const [images, setImages] = useState()
@@ -15,7 +20,7 @@ export default function ProductForm(props){
 
 		try{
 			const formData = new FormData()
-			formData.append('nameProduct', nameProduct)
+			formData.append('nameProduct', nameProduct.toLowerCase())
 			formData.append('price', price)
 			for(let i =0; i < images.length; i++) {
 				formData.append('images', images[i])
@@ -23,6 +28,30 @@ export default function ProductForm(props){
 
 			await newProduct(formData)
 			fetchProducts()
+		}catch(err){
+			console.error(err)
+		}
+	}
+
+	const handleSubmitPutProduct = async (e) => {
+		e.preventDefault()
+
+		try{
+			const formData = new FormData()
+			formData.append('nameProduct', nameProduct.toLowerCase())
+			formData.append('price', price)
+			for(let i =0; i < images.length; i++) {
+				formData.append('images', images[i])
+			}
+
+			await putProduct(productId,formData)
+			fetchProducts()
+
+			setModePost(true)
+			setProductId('')
+			setNameProduct('')
+			setPrice('')
+			setImages()
 		}catch(err){
 			console.error(err)
 		}
@@ -38,25 +67,37 @@ export default function ProductForm(props){
 		}catch (err){
 			console.error(err)
 		}	
-		
+	}
+
+	const handlePutProduct = (product) => {
+		setModePost(false)
+		setProductId(product.id)
+		setNameProduct(product.nameProduct)
+		setPrice(product.price)
 	}
 
 	return(
 		<div>
+			<Header />
 			<div>
-				<form onSubmit={handleSubmitNewProduct}>
-					<div>
-						<input type="text" name="nameProduct" value={nameProduct} onChange={(e) => setNameProduct(e.target.value)} placeholder="Nombre de Producto"/>
-					</div>
-					<div>
-						<input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Precio"/>
-					</div>
-					<div>
-						<input name="images" onChange={(e) => setImages(e.target.files)} type="file" multiple />
-					</div>
-					<button type="submit" >Agregar Producto</button>
-				</form>
+				{
+					modePost ? 
+						<FormProduct 
+							handleSubmitProduct={handleSubmitNewProduct} 
+							nameProduct={nameProduct} setNameProduct={setNameProduct} 
+							price={price} setPrice={setPrice}
+							setImages={setImages}
+							handleButtonLabel='Guardar Producto'/>
+						:
+						<FormProduct 
+							handleSubmitProduct={handleSubmitPutProduct} 
+							nameProduct={nameProduct} setNameProduct={setNameProduct} 
+							price={price} setPrice={setPrice}
+							setImages={setImages}
+							handleButtonLabel='Actualizar Producto'/>
+				}
 			</div>
+			<SearchBar onSearch={onSearch}/>
 			<table>
 				<thead>
 					<tr>
@@ -72,7 +113,7 @@ export default function ProductForm(props){
 					{
 						products.map((product, index) => {
 							return (
-								<ItemList key={product.id} product={product} index={index} handleDeleteProduct={handleDeleteProduct}/>
+								<ItemList key={product.id} product={product} index={index} handlePutProduct={handlePutProduct} handleDeleteProduct={handleDeleteProduct} />
 							)
 						})
 					}
