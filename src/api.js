@@ -21,13 +21,14 @@ export const getProducts = async () => {
 
 export const newProduct = (newProduct) => {
 	const config = {
-		header: {
-			Authorization: token
+		headers: {
+			'Authorization': token,
+			'Content-Type': 'multipart/form-data'
 		}
 	}
 
 	const req = axios.post(baseUrl + '/products', newProduct, config)
-	return req.then(res => res.data)
+	return req.then(res => res.data).catch(e => {console.error(`ErrorFront: ${e}`)})
 }
 
 export const login = async (credentials) => {
