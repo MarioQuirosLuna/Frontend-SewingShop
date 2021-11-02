@@ -1,6 +1,5 @@
 import React from 'react'
-import Product from './Product'
-import '../css/GalleryStyle.css'
+import Product from '../Product/Product'
 
 const Gallery = (props) => {
 

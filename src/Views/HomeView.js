@@ -1,6 +1,6 @@
 import React from 'react'
-import NavBar from '../Components/NavBar'
-import Gallery from '../Components/Gallery'
+import NavBar from '../Components/NavBar/NavBar'
+import Gallery from '../Components/Gallery/Gallery'
 
 export default function HomeView(prop) {
 

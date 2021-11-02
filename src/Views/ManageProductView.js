@@ -3,7 +3,7 @@ import { newProduct, putProduct, deleteProduct } from '../api'
 import ItemList from '../Components/ItemList'
 import Header from '../Components/Header'
 import SearchBar from '../Components/SearchBar'
-import FormProduct from '../Components/FormProduct'
+import FormProduct from '../Components/FormProduct/FormProduct'
 
 export default function ProductForm(props){
 
