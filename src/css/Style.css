@@ -2,3 +2,11 @@
 .fondo{
     background-color: #e8dfbf;
 }
+
+.form{
+    max-width: 30em;
+}
+
+.container-image{
+    min-height: 22em;
+}

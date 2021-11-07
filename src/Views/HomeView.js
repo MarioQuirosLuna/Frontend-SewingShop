@@ -8,7 +8,7 @@ export default function HomeView(prop) {
 
 
 	return (
-		<div className="">
+		<div className="container shadow-lg">
 			<NavBar user={user} handleLogOut={handleLogOut} onSearch={onSearch}/>
 			<div className="container">
 				<Gallery products={products}/>

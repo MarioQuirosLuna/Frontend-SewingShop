@@ -17,9 +17,9 @@ const NavBar = (props) => {
 					<div className="col-5 p-3">
 						{
 							!user ? 
-								<Link to='/login'>Sesi&oacute;n</Link>
+								<Link to='/login' className="btn btn-primary">Sesi&oacute;n</Link>
 								:
-								<Link to='/' onClick={handleLogOut}>Cerrar Sesi&oacute;n</Link>
+								<Link to='/' onClick={handleLogOut} className="btn btn-danger">Cerrar Sesi&oacute;n</Link>
 						}
 					</div>
 				</div>

@@ -22,7 +22,7 @@ const Searchbar = (props) => {
 	}
 
 	return (
-		<div className="input-group mb-3">
+		<div className="container input-group mb-3">
 			<input className="form-control" placeholder="Buscar" onChange={onChange} onKeyPress={onKeyPress}></input>
 			<button className="btn btn-success" onClick={onClick}>Buscar</button>
 		</div>

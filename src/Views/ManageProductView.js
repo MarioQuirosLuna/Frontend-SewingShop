@@ -4,10 +4,12 @@ import ItemList from '../Components/ItemList'
 import Header from '../Components/Header'
 import SearchBar from '../Components/SearchBar'
 import FormProduct from '../Components/FormProduct/FormProduct'
+import { TrashFill, Tools } from 'react-bootstrap-icons'
+
 
 export default function ProductForm(props){
 
-	const {products, setProducts, fetchProducts, onSearch} = props
+	const {products = [], setProducts, fetchProducts, onSearch} = props
 
 	const [modePost, setModePost] = useState(true)
 	const [productId, setProductId] = useState('')
@@ -77,7 +79,7 @@ export default function ProductForm(props){
 	}
 
 	return(
-		<div>
+		<div className="container shadow-lg">
 			<Header />
 			<div>
 				{
@@ -97,28 +99,32 @@ export default function ProductForm(props){
 							handleButtonLabel='Actualizar Producto'/>
 				}
 			</div>
-			<SearchBar onSearch={onSearch}/>
-			<table>
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Nombre</th>
-						<th>Precio</th>
-						<th>Imagenes</th>
-						<th>Actualizar</th>
-						<th>Borrar</th>
-					</tr>
-				</thead>
-				<tbody>
-					{
-						products.map((product, index) => {
-							return (
-								<ItemList key={product.id} product={product} index={index} handlePutProduct={handlePutProduct} handleDeleteProduct={handleDeleteProduct} />
-							)
-						})
-					}
-				</tbody>
-			</table>
+			<div className='container-fluid pt-2'>
+				<SearchBar onSearch={onSearch}/>
+				<div className="table-responsive rounded">
+					<table className='table table-hover table-striped border-dark'>
+						<thead className='table-dark text-center'>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Precio</th>
+								<th scope="col">Imagenes</th>
+								<th scope="col"><Tools /></th>
+								<th scope="col"><TrashFill /></th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								products.map((product, index) => {
+									return (
+										<ItemList key={product.id} product={product} index={index} handlePutProduct={handlePutProduct} handleDeleteProduct={handleDeleteProduct} />
+									)
+								})
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
 	)
 }

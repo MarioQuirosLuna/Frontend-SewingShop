@@ -1,17 +1,19 @@
 import React from 'react'
+import Slide from '../Components/Product/Slide'
+import { TrashFill, Tools } from 'react-bootstrap-icons'
 
 export default function ItemList(props) {
 
 	const { product, index, handlePutProduct, handleDeleteProduct} = props
     
 	return (
-		<tr>
-			<td>{index}</td>
+		<tr className="text-center align-middle">
+			<th scope="row">{index}</th>
 			<td>{product.nameProduct}</td>
 			<td>{product.price}</td>
-			<td><img className="product-img" src={product.images[0].url} alt={product.nameProduct} /></td>
-			<td><button onClick={() => handlePutProduct(product)}>Actualizar</button></td>
-			<td><button onClick={() => handleDeleteProduct(product.id)}>Eliminar</button></td>
+			<td><Slide imageUrl={product.images[0].url} nameProduct={product.nameProduct}/></td>
+			<td><button className="btn" onClick={() => handlePutProduct(product)}><Tools /></button></td>
+			<td><button className="btn" onClick={() => handleDeleteProduct(product.id)}><TrashFill /></button></td>
 		</tr>
 	)
 }
