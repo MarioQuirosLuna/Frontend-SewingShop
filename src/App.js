@@ -50,7 +50,7 @@ function App() {
 	}
 
 	return (
-		<div className="App fondo min-vh-100">
+		<div className="App back min-vh-100">
 			<BrowserRouter>
 				<Switch>
 					<Route exact path='/'><HomeView user={user} setUser={setUser} handleLogOut={handleLogOut} products={products} onSearch={onSearch}/></Route>

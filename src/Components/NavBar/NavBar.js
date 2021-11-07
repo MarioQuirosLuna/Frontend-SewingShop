@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar'
 import Header from '../Header'
-import '../../css/Style.css'
 
 const NavBar = (props) => {
 	const {onSearch, user, handleLogOut} = props

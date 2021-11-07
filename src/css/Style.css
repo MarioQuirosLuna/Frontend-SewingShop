@@ -1,5 +1,5 @@
     
-.fondo{
+.back{
     background-color: #e8dfbf;
 }
 
@@ -7,6 +7,30 @@
     max-width: 30em;
 }
 
-.container-image{
-    min-height: 22em;
+.img{
+    width: auto;
+    height: auto;
+    min-width: 13.5em;
+    min-height: 13.5em;
+    max-height: 13.5em;
+    max-width: 13.5em;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.img2{
+    width: auto;
+    height: auto;
+    min-width: 5em;
+    min-height: 5em;
+    max-height: 5em;
+    max-width: 5em;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }

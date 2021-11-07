@@ -20,9 +20,9 @@ const Product = (props) => {
 	}
 
 	return (
-		<div className="card text-center shadow-lg p-3 mb-5 bg-body rounded m-3">
+		<div className="card text-center shadow-lg p-3 bg-body rounded m-4">
 			<Slide imageUrl={product.images[imageIndex].url} nameProduct={product.nameProduct} prevImage={prevImage} nextImage={nextImage} />
-			<div className="card-body">
+			<div>
 				<h2>{product.nameProduct}</h2>
 				<p>₡{product.price}</p>
 				<span className="rounded-pill bg-success p-2 text-light">{product.availability}</span>

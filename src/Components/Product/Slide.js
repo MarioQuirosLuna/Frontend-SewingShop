@@ -1,16 +1,13 @@
 import React from 'react'
 import ButtonImage from './ButtonImage'
-import '../../css/Style.css'
 
 export default function Slide(props) {
 
 	const { imageUrl, nameProduct, prevImage, nextImage } = props
 
 	return (
-		<div>
-			<div className="container-image">
-				<img className="img-fluid mb-3 border border-3 img-product" src={imageUrl} alt={nameProduct} width="300" height="300"/>
-			</div>
+		<div className="d-inline justify-content-center">
+			<img className="img mb-3 border border-3" src={imageUrl} alt={nameProduct} />
 			{
 				(prevImage && nextImage) ? 
 					<div className=" d-flex justify-content-center">
