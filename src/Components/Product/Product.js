@@ -3,7 +3,7 @@ import Slide from '../Product/Slide'
 
 const Product = (props) => {
 
-	const { product } = props
+	const { product, setImage, changeVisibility } = props
 
 	const [imageIndex, setImageIndex] = useState(0)
 
@@ -21,12 +21,13 @@ const Product = (props) => {
 
 	return (
 		<div className="card text-center shadow-lg p-3 bg-body rounded m-4">
-			<Slide imageUrl={product.images[imageIndex].url} nameProduct={product.nameProduct} prevImage={prevImage} nextImage={nextImage} />
+			<Slide imageUrl={product.images[imageIndex].url} nameProduct={product.nameProduct} prevImage={prevImage} nextImage={nextImage} setImage={setImage} changeVisibility={changeVisibility} />
 			<div>
 				<h2>{product.nameProduct}</h2>
 				<p>₡{product.price}</p>
 				<span className="rounded-pill bg-success p-2 text-light">{product.availability}</span>
 			</div>
+			
 		</div>
 	)
 }
