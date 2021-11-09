@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
-import NavBar from '../Components/NavBar/NavBar'
-import Gallery from '../Components/Gallery/Gallery'
+import NavBar from '../Components/NavBar'
+import Gallery from '../Components/Gallery'
 import Modal from '../Components/Modal'
+import Loading from '../Components/Loading'
 
 export default function HomeView(prop) {
 
-	const {user, handleLogOut, products, onSearch} = prop
+	const {user, handleLogOut, products, onSearch, loading } = prop
 	const [modalVisibility, setModalVisibility] = useState(false)
 	const [image, setImage] = useState(null)
 
@@ -29,7 +30,12 @@ export default function HomeView(prop) {
 			<div>
 				<NavBar user={user} handleLogOut={handleLogOut} onSearch={onSearch}/>
 				<div className="container">
-					<Gallery products={products} setImage={setImage} changeVisibility={changeVisibility} />
+					{
+						loading ?
+							<Loading />
+							:
+						 <Gallery products={products} setImage={setImage} changeVisibility={changeVisibility} />							
+					}
 				</div>
 			</div> 
 		</div>

@@ -3,7 +3,7 @@ import { newProduct, putProduct, deleteProduct } from '../api'
 import ItemList from '../Components/ItemList'
 import Header from '../Components/Header'
 import SearchBar from '../Components/SearchBar'
-import FormProduct from '../Components/FormProduct/FormProduct'
+import FormProduct from '../Components/FormProduct'
 import { TrashFill, Tools } from 'react-bootstrap-icons'
 
 

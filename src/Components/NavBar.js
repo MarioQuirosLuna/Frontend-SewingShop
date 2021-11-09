@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SearchBar from '../SearchBar'
-import Header from '../Header'
+import SearchBar from '../Components/SearchBar'
+import Header from '../Components/Header'
 
 const NavBar = (props) => {
 	const {onSearch, user, handleLogOut} = props
@@ -11,7 +11,7 @@ const NavBar = (props) => {
 			<div className="">
 				<div className="d-flex">
 					<div className="col-7 p-3">
-						<img className="shadow-lg bg-body rounded" src="https://res.cloudinary.com/dusx4zdpz/image/upload/v1635217676/Logo_apnt8n.png" alt="logo" width="128" height="128"/>
+						<img className="shadow-lg bg-body rounded" src="https://res.cloudinary.com/dusx4zdpz/image/upload/v1636419055/Logo_u41gn7.jpg" alt="logo" width="128" height="128"/>
 					</div>
 					<div className="col-5 p-3">
 						{
