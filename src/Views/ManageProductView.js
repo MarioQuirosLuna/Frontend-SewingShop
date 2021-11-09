@@ -4,6 +4,7 @@ import ItemList from '../Components/ItemList'
 import Header from '../Components/Header'
 import SearchBar from '../Components/SearchBar'
 import FormProduct from '../Components/FormProduct'
+import Loading from '../Components/Loading'
 import { TrashFill, Tools } from 'react-bootstrap-icons'
 
 
@@ -11,25 +12,33 @@ export default function ProductForm(props){
 
 	const {products = [], setProducts, fetchProducts, onSearch} = props
 
+	const [loading, setLoading] = useState(false)
 	const [modePost, setModePost] = useState(true)
 	const [productId, setProductId] = useState('')
 	const [nameProduct, setNameProduct] = useState('')
 	const [price, setPrice] = useState('')
 	const [images, setImages] = useState()
+	const [message, setMessage] = useState('')
 
 	const handleSubmitNewProduct = async (e) => {
 		e.preventDefault()
+		if(!images) return setMessage('Seleccione almenos una imagen*')
 
 		try{
 			const formData = new FormData()
 			formData.append('nameProduct', nameProduct.toLowerCase())
 			formData.append('price', price)
-			for(let i =0; i < images.length; i++) {
+			for(let i = 0; i < images.length; i++) {
 				formData.append('images', images[i])
 			}
-
+			setLoading(true)
 			await newProduct(formData)
 			fetchProducts()
+			setProductId('')
+			setNameProduct('')
+			setPrice('')
+			setImages()
+			setLoading(false)
 		}catch(err){
 			console.error(err)
 		}
@@ -37,6 +46,7 @@ export default function ProductForm(props){
 
 	const handleSubmitPutProduct = async (e) => {
 		e.preventDefault()
+		if(!images) return setMessage('Seleccione almenos una imagen*')
 
 		try{
 			const formData = new FormData()
@@ -45,10 +55,10 @@ export default function ProductForm(props){
 			for(let i =0; i < images.length; i++) {
 				formData.append('images', images[i])
 			}
-
+			setLoading(true)
 			await putProduct(productId,formData)
 			fetchProducts()
-
+			setLoading(false)
 			setModePost(true)
 			setProductId('')
 			setNameProduct('')
@@ -62,10 +72,12 @@ export default function ProductForm(props){
 	const handleDeleteProduct = async (id) => {
 
 		try{
+			setLoading(true)
 			await deleteProduct(id)
 
 			const newProducts = products.filter(product => product.id !== id)
 			setProducts(newProducts)
+			setLoading(false)
 		}catch (err){
 			console.error(err)
 		}	
@@ -76,6 +88,21 @@ export default function ProductForm(props){
 		setProductId(product.id)
 		setNameProduct(product.nameProduct)
 		setPrice(product.price)
+		window.scroll(0,0)
+	}
+
+	const onSearchHandle = (text) => {
+		setLoading(true)
+		onSearch(text)
+		setLoading(false)
+	}
+
+	const backToSave = () => {
+		setProductId('')
+		setNameProduct('')
+		setPrice('')
+		setImages()
+		setModePost(true)
 	}
 
 	return(
@@ -98,9 +125,15 @@ export default function ProductForm(props){
 							setImages={setImages}
 							handleButtonLabel='Actualizar Producto'/>
 				}
+				<div className="text-center">
+					<div>
+						<button className="btn btn-secondary" onClick={backToSave}>Volver</button>
+					</div>
+					<span className="text-danger">{message}</span>
+				</div>			
 			</div>
 			<div className='container-fluid pt-2'>
-				<SearchBar onSearch={onSearch}/>
+				<SearchBar onSearch={onSearchHandle}/>
 				<div className="table-responsive rounded">
 					<table className='table table-hover table-striped border-dark'>
 						<thead className='table-dark text-center'>
@@ -121,8 +154,9 @@ export default function ProductForm(props){
 									)
 								})
 							}
-						</tbody>
+						</tbody>						
 					</table>
+					{ loading && <Loading />}
 				</div>
 			</div>
 		</div>
