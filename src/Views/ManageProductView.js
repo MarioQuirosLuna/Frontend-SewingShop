@@ -6,6 +6,7 @@ import SearchBar from '../Components/SearchBar'
 import FormProduct from '../Components/FormProduct'
 import Loading from '../Components/Loading'
 import { TrashFill, Tools } from 'react-bootstrap-icons'
+import ProductNotFound from '../Components/ProductNotFound'
 
 
 export default function ProductForm(props){
@@ -135,27 +136,32 @@ export default function ProductForm(props){
 			<div className='container-fluid pt-2'>
 				<SearchBar onSearch={onSearchHandle}/>
 				<div className="table-responsive rounded">
-					<table className='table table-hover table-striped border-dark'>
-						<thead className='table-dark text-center'>
-							<tr>
-								<th scope="col">#</th>
-								<th scope="col">Nombre</th>
-								<th scope="col">Precio</th>
-								<th scope="col">Imagenes</th>
-								<th scope="col"><Tools /></th>
-								<th scope="col"><TrashFill /></th>
-							</tr>
-						</thead>
-						<tbody>
-							{
-								products.map((product, index) => {
-									return (
-										<ItemList key={product.id} product={product} index={index} handlePutProduct={handlePutProduct} handleDeleteProduct={handleDeleteProduct} />
-									)
-								})
-							}
-						</tbody>						
-					</table>
+					{
+						products.length === 0 ?
+							<ProductNotFound />
+							:
+							<table className='table table-hover table-striped border-dark'>
+								<thead className='table-dark text-center'>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Nombre</th>
+										<th scope="col">Precio</th>
+										<th scope="col">Imagenes</th>
+										<th scope="col"><Tools /></th>
+										<th scope="col"><TrashFill /></th>
+									</tr>
+								</thead>
+								<tbody>
+									{
+										products.map((product, index) => {
+											return (
+												<ItemList key={product.id} product={product} index={index} handlePutProduct={handlePutProduct} handleDeleteProduct={handleDeleteProduct} />
+											)
+										})
+									}
+								</tbody>						
+							</table>
+					}
 					{ loading && <Loading />}
 				</div>
 			</div>
