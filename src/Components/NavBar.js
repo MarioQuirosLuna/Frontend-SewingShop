@@ -13,13 +13,15 @@ const NavBar = (props) => {
 					<div className="col-7 p-3">
 						<img className="shadow-lg bg-body rounded" src="https://res.cloudinary.com/dusx4zdpz/image/upload/v1636419055/Logo_u41gn7.jpg" alt="logo" width="128" height="128"/>
 					</div>
-					<div className="col-5 p-3">
-						{
-							!user ? 
-								<Link to='/login' className="btn btn-primary">Sesi&oacute;n</Link>
-								:
-								<Link to='/' onClick={handleLogOut} className="btn btn-danger">Cerrar Sesi&oacute;n</Link>
-						}
+					<div className="d-flex col-5 p-3 justify-content-end">
+						<div>
+							{
+								!user ? 
+									<Link to='/login' className="btn btn-primary">Sesi&oacute;n</Link>
+									:
+									<Link to='/' onClick={handleLogOut} className="btn btn-danger">Cerrar Sesi&oacute;n</Link>
+							}
+						</div>
 					</div>
 				</div>
 				<div className="d-inline">
