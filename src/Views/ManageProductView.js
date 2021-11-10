@@ -17,7 +17,8 @@ export default function ProductForm(props){
 	const [modePost, setModePost] = useState(true)
 	const [productId, setProductId] = useState('')
 	const [nameProduct, setNameProduct] = useState('')
-	const [price, setPrice] = useState('')
+	const [priceInitial, setPriceInitial] = useState('')
+	const [priceFinal, setPriceFinal] = useState('')
 	const [images, setImages] = useState()
 	const [message, setMessage] = useState('')
 
@@ -28,7 +29,8 @@ export default function ProductForm(props){
 		try{
 			const formData = new FormData()
 			formData.append('nameProduct', nameProduct.toLowerCase())
-			formData.append('price', price)
+			formData.append('priceInitial', priceInitial)
+			formData.append('priceFinal', priceFinal)
 			for(let i = 0; i < images.length; i++) {
 				formData.append('images', images[i])
 			}
@@ -37,7 +39,8 @@ export default function ProductForm(props){
 			fetchProducts()
 			setProductId('')
 			setNameProduct('')
-			setPrice('')
+			setPriceInitial('')
+			setPriceFinal('')
 			setImages()
 			setLoading(false)
 		}catch(err){
@@ -47,23 +50,29 @@ export default function ProductForm(props){
 
 	const handleSubmitPutProduct = async (e) => {
 		e.preventDefault()
-		if(!images) return setMessage('Seleccione almenos una imagen*')
 
 		try{
 			const formData = new FormData()
 			formData.append('nameProduct', nameProduct.toLowerCase())
-			formData.append('price', price)
-			for(let i =0; i < images.length; i++) {
-				formData.append('images', images[i])
+			formData.append('priceInitial', priceInitial)
+			formData.append('priceFinal', priceFinal)
+			if(images){
+				for(let i = 0; i < images.length; i++) {
+					formData.append('images', images[i])
+					console.log(images[i])
+				}
+			}else{
+				formData.append('images', null)
 			}
 			setLoading(true)
-			await putProduct(productId,formData)
+			await putProduct(productId, formData)
 			fetchProducts()
 			setLoading(false)
 			setModePost(true)
 			setProductId('')
 			setNameProduct('')
-			setPrice('')
+			setPriceInitial('')
+			setPriceFinal('')
 			setImages()
 		}catch(err){
 			console.error(err)
@@ -88,7 +97,8 @@ export default function ProductForm(props){
 		setModePost(false)
 		setProductId(product.id)
 		setNameProduct(product.nameProduct)
-		setPrice(product.price)
+		setPriceInitial(product.priceInitial)
+		setPriceFinal(product.priceFinal)
 		window.scroll(0,0)
 	}
 
@@ -101,7 +111,8 @@ export default function ProductForm(props){
 	const backToSave = () => {
 		setProductId('')
 		setNameProduct('')
-		setPrice('')
+		setPriceInitial('')
+		setPriceFinal('')
 		setImages()
 		setModePost(true)
 	}
@@ -115,14 +126,14 @@ export default function ProductForm(props){
 						<FormProduct 
 							handleSubmitProduct={handleSubmitNewProduct} 
 							nameProduct={nameProduct} setNameProduct={setNameProduct} 
-							price={price} setPrice={setPrice}
+							priceInitial={priceInitial} setPriceInitial={setPriceInitial} priceFinal={priceFinal} setPriceFinal={setPriceFinal}
 							setImages={setImages}
 							handleButtonLabel='Guardar Producto'/>
 						:
 						<FormProduct 
 							handleSubmitProduct={handleSubmitPutProduct} 
 							nameProduct={nameProduct} setNameProduct={setNameProduct} 
-							price={price} setPrice={setPrice}
+							priceInitial={priceInitial} setPriceInitial={setPriceInitial} priceFinal={priceFinal} setPriceFinal={setPriceFinal}
 							setImages={setImages}
 							handleButtonLabel='Actualizar Producto'/>
 				}
