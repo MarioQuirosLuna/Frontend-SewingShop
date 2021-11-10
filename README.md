@@ -3,7 +3,7 @@ It is a project that I did for the small sewing business that belongs to my moth
 
 Deployed in: https://tallerdecosturacintyaluna.vercel.app/
 
-##Clone and run the local project
+## Clone and run the local project
 
 Dowload the project
 
@@ -29,16 +29,16 @@ The backend repository is here: https://github.com/MarioQuirosLuna/Backend-Sewin
 
 Some images of the project:
 
-##Desktop
+## Desktop
 
 ![img1](https://user-images.githubusercontent.com/37676736/141033718-f8f7ceb1-9359-4a6a-8f48-91d002eae868.png)
 
 ![img2](https://user-images.githubusercontent.com/37676736/141033775-a09d9441-834a-4325-8d7b-758d5748ad9a.png)
 
-##IPAD
+## IPAD
 
 ![img3](https://user-images.githubusercontent.com/37676736/141033896-77a77c0c-dce6-4680-bcbe-167ad5598a75.PNG)
 
-##IPHONE 5
+## IPHONE 5
 
 ![img4](https://user-images.githubusercontent.com/37676736/141033960-17e7f8d6-1e66-49fa-945d-e204ce479b88.PNG)
