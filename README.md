@@ -29,6 +29,8 @@ If you want to use these queries, you can run the backend in a local environment
 
 The backend repository is here: https://github.com/MarioQuirosLuna/Backend-SewingShop
 
+Deployed in: https://backend-sewingshop.herokuapp.com/api/products
+
 Some images of the project:
 
 ## Desktop
