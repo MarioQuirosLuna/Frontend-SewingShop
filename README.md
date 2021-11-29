@@ -35,14 +35,17 @@ Some images of the project:
 
 ## Desktop
 
-![img1](https://user-images.githubusercontent.com/37676736/141033718-f8f7ceb1-9359-4a6a-8f48-91d002eae868.png)
+![Desktop](https://user-images.githubusercontent.com/37676736/143901661-77a60b68-db66-4ebc-810c-caf82925b6e5.png)
 
-![img2](https://user-images.githubusercontent.com/37676736/141033775-a09d9441-834a-4325-8d7b-758d5748ad9a.png)
+
+![Desktop2](https://user-images.githubusercontent.com/37676736/143901677-3317b8da-0226-4fca-81ee-5fb79b281e65.png)
 
 ## IPAD
 
-![img3](https://user-images.githubusercontent.com/37676736/141033896-77a77c0c-dce6-4680-bcbe-167ad5598a75.PNG)
+![Ipad](https://user-images.githubusercontent.com/37676736/143901704-4b5f6bf0-c8e2-419b-bfba-ecea82337631.png)
+
 
 ## IPHONE 5
 
-![img4](https://user-images.githubusercontent.com/37676736/141033960-17e7f8d6-1e66-49fa-945d-e204ce479b88.PNG)
+![Movil](https://user-images.githubusercontent.com/37676736/143901744-3c45c9b2-8eed-4449-9135-873143f01978.png)
+
