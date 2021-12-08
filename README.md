@@ -3,6 +3,8 @@ It is a project that I did for the small sewing business that belongs to my moth
 
 Deployed in: https://tallerdecosturacintyaluna.vercel.app/
 
+![Img preview](https://res.cloudinary.com/dusx4zdpz/image/upload/v1638990442/portfolio/portfolio/TallerdeCostura_jhuarb.png)
+
 ## Clone and run the local project
 
 Dowload the project
