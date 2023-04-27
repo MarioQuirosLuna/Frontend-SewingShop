@@ -18,7 +18,6 @@
 |--|--|--|--|
 |![Desktop](https://user-images.githubusercontent.com/37676736/143901661-77a60b68-db66-4ebc-810c-caf82925b6e5.png)|![Desktop2](https://user-images.githubusercontent.com/37676736/143901677-3317b8da-0226-4fca-81ee-5fb79b281e65.png)|![Ipad](https://user-images.githubusercontent.com/37676736/143901704-4b5f6bf0-c8e2-419b-bfba-ecea82337631.png)|![Movil](https://user-images.githubusercontent.com/37676736/143901744-3c45c9b2-8eed-4449-9135-873143f01978.png)|
 
-Deployed in: https://tallerdecosturacintyaluna.vercel.app/
 
 ## 💻 About the project.
 
